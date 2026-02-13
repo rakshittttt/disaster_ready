@@ -1,0 +1,63 @@
+IMPORTANT: 
+1. Do NOT change the app name.
+2. The app name must be: Rakshit Disaster Response.
+3. Use ONLY Indian cities (Delhi, Mumbai, Chennai, Kolkata, Patiala, Chandigarh, etc.)
+4. The UI must be displayed inside a centered mobile phone mockup frame.
+5. The design must match the modern glassmorphism + gradient login style shown in this reference: https://youtube.com/shorts/RutWMhaz6ms
+
+Create a modern animated frontend using React + Tailwind CSS.
+
+The layout must include a full mobile phone mockup centered on the screen with rounded corners and a notch at the top (iPhone-style preview).
+
+Inside the phone layout, build the following screens:
+
+1. Animated Welcome / Login Screen
+- Gradient background (blue/teal/purple blend)
+- Glassmorphism card in center
+- App name: "Rakshit Disaster Response"
+- Smooth fade-in animation
+
+2. Registration Screen
+- Input: Indian city selection dropdown
+- Category selection (Adult, Elderly, Child)
+- Two emergency contacts (Local + Outside City)
+
+3. Home Screen
+- Large glowing circular "I AM SAFE" button in center
+- Animated pulse effect
+- Top alert banner (example: "Earthquake probability rising in Chandigarh")
+- Bottom navigation: Alerts | Community | Safety | Emergency
+
+4. Community Screen
+- Show nearby Indian communities:
+  - "Patiala Relief Group"
+  - "Chandigarh Emergency Network"
+  - "Delhi Disaster Support"
+- Join Community button
+- Clean dark futuristic UI
+
+5. Disaster Alert Screen
+- Show probability percentage
+- Warning message
+- "View Safety Plan" button
+
+6. Dos and Don’ts Screen
+- Checklist UI with animated tick marks
+
+7. Emergency Contacts Screen
+- List of Indian emergency numbers:
+  - Ambulance 108
+  - Police 100
+  - Fire 101
+- Large tap-friendly buttons
+
+Design Requirements:
+- Dark futuristic theme
+- Smooth page transitions
+- Glassmorphism elements
+- Soft glowing effects
+- Animated gradients
+- Mobile-first responsive
+- Must show the entire app inside a phone device frame preview
+
+Return full working code ready to run.

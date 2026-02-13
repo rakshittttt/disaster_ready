@@ -12,16 +12,43 @@ import ActiveAlert from "./pages/ActiveAlert";
 import DosDonts from "./pages/DosDonts";
 import EmergencyContacts from "./pages/EmergencyContacts";
 
+function PhoneWrapper({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="phone-frame">
+      <div className="phone-notch">
+        <div className="w-12 h-1 bg-zinc-800 rounded-full" />
+      </div>
+      <div className="phone-screen">
+        {children}
+      </div>
+    </div>
+  );
+}
+
 function Router() {
   return (
     <Switch>
-      <Route path="/" component={Welcome} />
-      <Route path="/setup" component={LocationInput} />
-      <Route path="/home" component={Home} />
-      <Route path="/community" component={Community} />
-      <Route path="/alert" component={ActiveAlert} />
-      <Route path="/dos-donts" component={DosDonts} />
-      <Route path="/contacts" component={EmergencyContacts} />
+      <Route path="/">
+        <PhoneWrapper><Welcome /></PhoneWrapper>
+      </Route>
+      <Route path="/setup">
+        <PhoneWrapper><LocationInput /></PhoneWrapper>
+      </Route>
+      <Route path="/home">
+        <PhoneWrapper><Home /></PhoneWrapper>
+      </Route>
+      <Route path="/community">
+        <PhoneWrapper><Community /></PhoneWrapper>
+      </Route>
+      <Route path="/alert">
+        <PhoneWrapper><ActiveAlert /></PhoneWrapper>
+      </Route>
+      <Route path="/dos-donts">
+        <PhoneWrapper><DosDonts /></PhoneWrapper>
+      </Route>
+      <Route path="/contacts">
+        <PhoneWrapper><EmergencyContacts /></PhoneWrapper>
+      </Route>
       <Route component={NotFound} />
     </Switch>
   );
@@ -31,10 +58,8 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <div className="min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-primary/30">
-          <Router />
-          <Toaster />
-        </div>
+        <Router />
+        <Toaster />
       </TooltipProvider>
     </QueryClientProvider>
   );

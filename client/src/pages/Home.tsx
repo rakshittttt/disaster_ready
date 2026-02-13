@@ -1,16 +1,17 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocation, Link } from "wouter";
-import { ShieldCheck, Bell, Users, BookOpen, PhoneCall, Menu } from "lucide-react";
+import { ShieldCheck, Bell, Users, BookOpen, PhoneCall } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const alerts = [
-  "Flood warning in North Bay area - Seek higher ground",
-  "Wildfire activity detected 15 miles East - Stay alert",
-  "Seismic activity reported - Drop, Cover, and Hold on"
+  "Earthquake probability rising in Chandigarh",
+  "Flood warning in Delhi-NCR - Level 2 Alert",
+  "High heat wave alert in Mumbai region"
 ];
 
 export default function Home() {
   const [alertIndex, setAlertIndex] = useState(0);
+  const [location] = useLocation();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -20,24 +21,15 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
-      {/* Header */}
-      <header className="p-6 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-primary/20 rounded-xl flex items-center justify-center border border-primary/30">
-            <ShieldCheck className="w-6 h-6 text-primary" />
-          </div>
-          <h1 className="font-display font-bold text-xl">SENTINEL</h1>
-        </div>
-        <button className="w-10 h-10 rounded-full glass flex items-center justify-center">
-          <Menu className="w-5 h-5" />
-        </button>
-      </header>
-
-      {/* Alert Banner */}
-      <div className="px-6 mb-8">
+    <div className="flex-1 flex flex-col">
+      {/* Top Banner */}
+      <div className="px-6 pt-12 pb-4">
         <Link href="/alert">
-          <div className="bg-primary/10 border border-primary/20 rounded-2xl p-4 overflow-hidden relative cursor-pointer">
+          <motion.div 
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            className="bg-primary/10 border border-primary/20 rounded-2xl p-4 overflow-hidden relative cursor-pointer"
+          >
             <div className="flex items-center gap-3">
               <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               <AnimatePresence mode="wait">
@@ -46,58 +38,74 @@ export default function Home() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
-                  className="text-sm font-medium text-primary flex-1"
+                  className="text-xs font-bold text-primary flex-1"
                 >
                   {alerts[alertIndex]}
                 </motion.p>
               </AnimatePresence>
             </div>
-            <div className="absolute right-0 top-0 h-full w-12 bg-gradient-to-l from-primary/10 to-transparent pointer-events-none" />
-          </div>
+          </motion.div>
         </Link>
       </div>
 
       {/* Main Action */}
-      <div className="flex-1 px-6 flex flex-col items-center justify-center">
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.9 }}
-          className="relative w-64 h-64 rounded-full flex flex-col items-center justify-center transition-all group"
+      <div className="flex-1 flex flex-col items-center justify-center px-6">
+        <motion.div
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          className="relative w-56 h-56 flex items-center justify-center"
         >
-          <div className="absolute inset-0 bg-primary rounded-full blur-[40px] opacity-20 group-hover:opacity-40 transition-opacity" />
-          <div className="absolute inset-0 border-4 border-primary/20 rounded-full animate-ping" style={{ animationDuration: '3s' }} />
-          <div className="absolute inset-[15px] border-2 border-primary/40 rounded-full" />
+          {/* Pulse Effects */}
+          <motion.div
+            animate={{ scale: [1, 1.4, 1], opacity: [0.1, 0, 0.1] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeOut" }}
+            className="absolute inset-0 bg-primary rounded-full"
+          />
+          <motion.div
+            animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0, 0.2] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeOut", delay: 0.5 }}
+            className="absolute inset-4 bg-primary rounded-full"
+          />
           
-          <div className="relative z-10 w-48 h-48 rounded-full bg-primary flex flex-col items-center justify-center shadow-[0_20px_60px_rgba(239,68,68,0.5)]">
-            <ShieldCheck className="w-12 h-12 text-white mb-2" />
-            <span className="text-xl font-bold text-white uppercase tracking-tighter">I AM SAFE</span>
-          </div>
-        </motion.button>
-        <p className="mt-8 text-muted-foreground text-sm font-medium uppercase tracking-[0.2em]">Safety Status Active</p>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.9 }}
+            className="relative z-10 w-44 h-44 rounded-full bg-primary flex flex-col items-center justify-center shadow-[0_0_50px_rgba(0,255,255,0.4)] border-4 border-white/20"
+          >
+            <ShieldCheck className="w-12 h-12 text-black mb-1" />
+            <span className="text-lg font-bold text-black uppercase tracking-tighter">I AM SAFE</span>
+          </motion.button>
+        </motion.div>
+        
+        <p className="mt-8 text-muted-foreground text-[10px] font-bold uppercase tracking-[0.3em]">Guardian Protocol Active</p>
       </div>
 
-      {/* Features Grid */}
-      <div className="grid grid-cols-4 gap-4 p-6 bg-card/40 backdrop-blur-xl border-t border-white/5 rounded-t-[3rem]">
-        <FeatureIcon icon={<Bell className="w-6 h-6" />} label="Alerts" href="/alert" />
-        <FeatureIcon icon={<Users className="w-6 h-6" />} label="Community" href="/community" />
-        <FeatureIcon icon={<BookOpen className="w-6 h-6" />} label="Safety" href="/dos-donts" />
-        <FeatureIcon icon={<PhoneCall className="w-6 h-6" />} label="Emergency" href="/contacts" />
-      </div>
+      {/* Navigation */}
+      <nav className="p-6 grid grid-cols-4 gap-2 border-t border-white/5 bg-card/20 backdrop-blur-xl">
+        <NavIcon icon={<Bell className="w-5 h-5" />} label="Alerts" active={location === '/alert'} href="/alert" />
+        <NavIcon icon={<Users className="w-5 h-5" />} label="Community" active={location === '/community'} href="/community" />
+        <NavIcon icon={<BookOpen className="w-5 h-5" />} label="Safety" active={location === '/dos-donts'} href="/dos-donts" />
+        <NavIcon icon={<PhoneCall className="w-5 h-5" />} label="Emergency" active={location === '/contacts'} href="/contacts" />
+      </nav>
     </div>
   );
 }
 
-function FeatureIcon({ icon, label, href }: { icon: React.ReactNode, label: string, href: string }) {
+function NavIcon({ icon, label, active, href }: { icon: React.ReactNode, label: string, active: boolean, href: string }) {
   return (
     <Link href={href}>
       <motion.div 
         whileTap={{ scale: 0.9 }}
-        className="flex flex-col items-center gap-2 cursor-pointer"
+        className="flex flex-col items-center gap-1.5 cursor-pointer"
       >
-        <div className="w-14 h-14 rounded-2xl glass-dark flex items-center justify-center text-muted-foreground hover:text-primary transition-colors hover:border-primary/30">
+        <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all ${
+          active ? 'bg-primary text-black' : 'bg-white/5 text-muted-foreground'
+        }`}>
           {icon}
         </div>
-        <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">{label}</span>
+        <span className={`text-[9px] font-bold uppercase tracking-wider ${active ? 'text-primary' : 'text-muted-foreground'}`}>
+          {label}
+        </span>
       </motion.div>
     </Link>
   );

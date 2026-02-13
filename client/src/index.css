@@ -45,19 +45,19 @@
   --card-foreground: 0 0% 98%;
   --popover: 240 10% 4%;
   --popover-foreground: 0 0% 98%;
-  --primary: 0 72% 51%;
+  --primary: 180 100% 40%;
   --primary-foreground: 0 0% 100%;
   --secondary: 240 4% 16%;
   --secondary-foreground: 0 0% 98%;
   --muted: 240 4% 16%;
   --muted-foreground: 240 5% 65%;
-  --accent: 0 72% 51%;
+  --accent: 180 100% 40%;
   --accent-foreground: 0 0% 98%;
   --destructive: 0 62% 30%;
   --destructive-foreground: 0 0% 98%;
   --border: 240 4% 16%;
   --input: 240 4% 16%;
-  --ring: 0 72% 51%;
+  --ring: 180 100% 40%;
   --radius: 1.5rem;
 }
 
@@ -66,7 +66,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground font-sans selection:bg-primary/30;
+    @apply bg-zinc-950 text-foreground font-sans selection:bg-primary/30 min-h-screen flex items-center justify-center p-4 overflow-hidden;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
   h1, h2, h3, h4, h5, h6 {
@@ -74,15 +74,27 @@
   }
 }
 
+/* Phone Mockup Styling */
+.phone-frame {
+  @apply relative w-[375px] h-[760px] bg-black rounded-[3rem] border-[8px] border-zinc-800 shadow-2xl overflow-hidden flex flex-col;
+}
+
+.phone-notch {
+  @apply absolute top-0 left-1/2 -translate-x-1/2 w-40 h-7 bg-black rounded-b-2xl z-50 flex items-center justify-center;
+}
+
+.phone-screen {
+  @apply flex-1 w-full h-full relative overflow-hidden bg-background flex flex-col;
+}
+
 .glass {
-  @apply bg-card/60 backdrop-blur-xl border border-white/10;
+  @apply bg-white/10 backdrop-blur-xl border border-white/20;
 }
 
 .glass-dark {
   @apply bg-black/40 backdrop-blur-2xl border border-white/5;
 }
 
-.neo-blur {
-  background: radial-gradient(circle at top left, rgba(220, 38, 38, 0.15), transparent 40%),
-              radial-gradient(circle at bottom right, rgba(220, 38, 38, 0.1), transparent 40%);
+.welcome-gradient {
+  background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 50%, #9b59b6 100%);
 }

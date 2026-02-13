@@ -6,68 +6,69 @@ export default function Welcome() {
   const [, setLocation] = useLocation();
 
   return (
-    <div className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-background neo-blur">
-      {/* Animated Background Elements */}
+    <div className="relative h-full w-full flex flex-col items-center justify-center overflow-hidden welcome-gradient">
+      {/* Animated Floating Bubbles */}
       <motion.div
         animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.6, 0.3],
+          y: [0, -20, 0],
+          opacity: [0.3, 0.5, 0.3],
         }}
-        transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-        className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/20 blur-[120px] rounded-full"
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-20 -left-10 w-40 h-40 bg-white/20 blur-3xl rounded-full"
       />
       <motion.div
         animate={{
-          scale: [1, 1.3, 1],
+          y: [0, 20, 0],
           opacity: [0.2, 0.4, 0.2],
         }}
-        transition={{ duration: 10, repeat: Infinity, ease: "linear", delay: 1 }}
-        className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-primary/10 blur-[140px] rounded-full"
+        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        className="absolute bottom-20 -right-10 w-60 h-60 bg-white/10 blur-3xl rounded-full"
       />
 
-      <div className="relative z-10 flex flex-col items-center px-6 text-center">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        className="relative z-10 glass p-8 rounded-[2.5rem] w-[85%] text-center border-white/30"
+      >
         <motion.div
-          initial={{ scale: 0, rotate: -20 }}
-          animate={{ scale: 1, rotate: 0 }}
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
           transition={{ type: "spring", damping: 12, stiffness: 100 }}
-          className="w-24 h-24 bg-primary flex items-center justify-center rounded-3xl shadow-[0_0_50px_rgba(239,68,68,0.4)] mb-8"
+          className="w-20 h-20 bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center rounded-3xl mx-auto mb-6"
         >
-          <ShieldAlert className="w-12 h-12 text-white" />
+          <ShieldAlert className="w-10 h-10 text-white" />
         </motion.div>
 
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="text-5xl font-display font-bold tracking-tighter mb-4"
+          transition={{ delay: 0.2 }}
+          className="text-2xl font-display font-bold text-white tracking-tight mb-2"
         >
-          SENTINEL
+          Rakshit Disaster Response
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="text-muted-foreground text-lg max-w-[280px] leading-relaxed mb-12"
+          transition={{ delay: 0.3 }}
+          className="text-white/80 text-sm leading-relaxed mb-8"
         >
-          Your advanced companion for disaster preparedness and safety.
+          Securing lives through intelligent Indian-native disaster response.
         </motion.p>
 
         <motion.button
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          transition={{ delay: 0.4 }}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
           onClick={() => setLocation("/setup")}
-          className="px-10 py-4 bg-white text-black font-bold rounded-2xl shadow-xl transition-all hover:bg-white/90"
+          className="w-full py-4 bg-white text-blue-600 font-bold rounded-2xl shadow-xl transition-all hover:bg-white/90"
         >
-          Get Started
+          Enter Workspace
         </motion.button>
-      </div>
-
-      {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none mix-blend-overlay" />
+      </motion.div>
     </div>
   );
 }
