@@ -163,9 +163,19 @@ JWT_SECRET=your_secret_key
 <img width="374" height="708" alt="image" src="https://github.com/user-attachments/assets/1d052bf3-dde4-41b3-bbcd-fa5ecd548c47" />
 
 
+
 📌Community:
 
+
+<img width="375" height="708" alt="image" src="https://github.com/user-attachments/assets/a34a8dc9-4d63-4bf0-86ae-2bed9d13e536" />
+
+
+📌Emergency contacts:
+
+
 <img width="368" height="703" alt="image" src="https://github.com/user-attachments/assets/f1b3c665-6026-41a7-808d-e38eb782fcf0" />
+
+
 
 
 📌Safety check-list:
