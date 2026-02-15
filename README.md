@@ -154,16 +154,24 @@ JWT_SECRET=your_secret_key
 🖼️ Screenshots
 
 📌 Registration page:
+
 <img width="369" height="708" alt="image" src="https://github.com/user-attachments/assets/3248b3c5-8fd4-4c9e-b692-fade83bedfb7" />
 
+
 📌 Alert page:
+
 <img width="374" height="708" alt="image" src="https://github.com/user-attachments/assets/1d052bf3-dde4-41b3-bbcd-fa5ecd548c47" />
 
+
 📌Community:
+
 <img width="368" height="703" alt="image" src="https://github.com/user-attachments/assets/f1b3c665-6026-41a7-808d-e38eb782fcf0" />
 
+
 📌Safety check-list:
+
 <img width="384" height="708" alt="image" src="https://github.com/user-attachments/assets/bd8280e0-a5cd-431c-b61e-3ee8300dfcb5" />
+
 
 
 
