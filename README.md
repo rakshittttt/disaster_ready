@@ -125,18 +125,13 @@ Disaster-Ready/
 
 ⚙️ Installation & Setup
 1️⃣ Clone the Repository
-git clone https://github.com/your-username/disaster-ready.git
+git clone https://github.com/rakshittttt/disaster_ready/tree/main
 cd disaster-ready
 
 2️⃣ Run Frontend (Client)
 cd client
 npm install
 npm run dev
-
-
-Frontend will run on:
-
-http://localhost:5173
 
 3️⃣ Run Backend (Server)
 
@@ -146,10 +141,6 @@ cd server
 npm install
 npm run dev
 
-
-Backend will run on:
-
-http://localhost:5000
 
 🔑 Environment Variables Setup
 
