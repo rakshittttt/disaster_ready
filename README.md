@@ -217,11 +217,17 @@ People often face:
 👨‍💻 Contributors
 
 💡 Team Members:
+
 Priya
+
 Rakshit Rana 
+
 Payal 
+
 Arsh 
+
 Navpreet kaur 
+
 
 📜 License
 
