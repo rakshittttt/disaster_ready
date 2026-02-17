@@ -46,8 +46,10 @@ app.use((req, res, next) => {
 
   res.on("finish", () => {
     const duration = Date.now() - start;
+
     if (path.startsWith("/api")) {
       let logLine = `${req.method} ${path} ${res.statusCode} in ${duration}ms`;
+
       if (capturedJsonResponse) {
         logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
       }
@@ -75,9 +77,7 @@ app.use((req, res, next) => {
     return res.status(status).json({ message });
   });
 
-  // importantly only setup vite in development and after
-  // setting up all the other routes so the catch-all route
-  // doesn't interfere with the other routes
+  // Setup Vite only in development
   if (process.env.NODE_ENV === "production") {
     serveStatic(app);
   } else {
@@ -85,12 +85,12 @@ app.use((req, res, next) => {
     await setupVite(httpServer, app);
   }
 
-  // ALWAYS serve the app on the port specified in the environment variable PORT
-  // Other ports are firewalled. Default to 5000 if not specified.
-  // this serves both the API and the client.
-  // It is the only port that is not firewalled.
+  // ALWAYS serve the app on PORT env variable or default 5000
   const port = parseInt(process.env.PORT || "5000", 10);
-  httpServer.listen(port, () => {
-  log(`serving on http://localhost:${port}`);
-});
+
+  // WINDOWS FIX: remove reusePort and use localhost instead of 0.0.0.0
+  httpServer.listen(port, "127.0.0.1", () => {
+    log(`serving on http://localhost:${port}`);
+  });
 })();
+
